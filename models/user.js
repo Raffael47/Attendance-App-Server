@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Shift, {
         onUpdate: 'NOACTION'
       });
+      User.belongsTo(models.Role,{
+        onUpdate: 'NOACTION'
+      });
       User.hasMany(models.Payroll);
     }
   }
@@ -42,7 +45,8 @@ module.exports = (sequelize, DataTypes) => {
     salary: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    birthdate: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'User',

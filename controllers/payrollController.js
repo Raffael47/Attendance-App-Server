@@ -147,7 +147,8 @@ module.exports = {
             let offset = 7 * 60 * 60 * 1000
             const today = new Date (year, month, day, startHour).getTime() + offset
             const currentTime = new Date(Date.now()).getTime() + offset
-            const minutesLate = Math.floor( (today - currentTime) / 1000 / 60 )
+            const minutesLate = Math.floor( (currentTime - today) / 1000 / 60 )
+            console.log(minutesLate)
             
             let deduction = currentDeduction.deduction + (salaryPerMinute * minutesLate);
             const net = userInfo.salary - tax - deduction;

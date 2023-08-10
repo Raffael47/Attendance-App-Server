@@ -1,6 +1,7 @@
 const db = require('../models');
 const user = db.User;
 const shift = db.Shift;
+const role = db.Role;
 const { Op, Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
@@ -115,7 +116,7 @@ module.exports = {
                 order: [ [ Sequelize.col(orderBy), `${sort}` ] ],
                 limit,
                 offset: ( page - 1 ) * limit,
-                include: [{ model: shift }]
+                include: [{ model: shift }, { model: role }]
             }
             const result = await user.findAll(filter)
             const total = await user.count(filter);
@@ -146,6 +147,17 @@ module.exports = {
             res.status(404).send(err);
         }
     },
+    getRoles: async(req, res) => {
+        try {
+            const result = await role.findAll();
+            res.status(200).send({
+                status: true,
+                result
+            })
+        } catch (err) {
+            res.status(404).send(err);
+        }
+    },
     editName: async(req, res) => {
         try {
             const { name } = req.body;
@@ -158,6 +170,24 @@ module.exports = {
             res.status(200).send({
                 status: true,
                 message: 'name updated'
+            });
+            
+        } catch (err) {
+            res.status(400).send(err);
+        }
+    },
+    editBirthdate: async(req, res) => {
+        try {
+            const { birthdate } = req.body;
+             await user.update({ birthdate }, {
+                where: {
+                    id: req.user.id
+                }
+            });
+    
+            res.status(200).send({
+                status: true,
+                message: 'birthdate updated'
             });
             
         } catch (err) {

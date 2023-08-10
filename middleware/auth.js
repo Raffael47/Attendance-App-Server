@@ -7,8 +7,7 @@ module.exports = {
             if (!token) throw { status: false, message: 'Unauthorized request' };
             token = token.split(' ')[1];
     
-            let verifiedUser = jwt.verify( token, 'hashtag' );
-            // let verifiedUser = jwt.verify( token, process.env.KEY_JWT );
+            let verifiedUser = jwt.verify( token, process.env.KEY_JWT );
             req.user = verifiedUser;
             next();
             

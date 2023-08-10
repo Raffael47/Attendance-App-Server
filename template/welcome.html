@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+    font-size: 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    }
+
+    button {
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    outline: 0;
+    padding: 5px auto;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    }
+
+    button:focus {
+    color: #171e29;
+    }
+
+    button:hover {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+    }
+
+    button:active {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+    }
+    </style>
+    <title>Welcome</title>
+</head>
+<body>
+    <p>Welcome, {{name}}! </p>
+    <p>We're happy to have you on our team. We hope you'll always feel free to speak up, share your thoughts and challenge us. We're all going to grow together here, and we look forward to it!</p>
+    <p>Click this link below to set your password</p>
+    <a href={{link}}>
+        <button>Reset Password</button>
+    </a>
+    <p>This link is usable for 10 minutes.</p>
+    <p>You can set your password on the attendance app settings</p>
+    <p>Thank you, <br/>Purwadhika Team</p>
+</body>
+</html>
